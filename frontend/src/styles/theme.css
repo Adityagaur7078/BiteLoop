@@ -1,0 +1,13 @@
+:root {
+  color-scheme: dark;
+  --bg: #080808;
+  --surface: #111111;
+  --surface-strong: #171717;
+  --text: #ffffff;
+  --muted: #bebebe;
+  --border: #2c2c2c;
+  --accent: #ff8a00;
+  --accent-strong: #ff8a00;
+  --accent-soft: rgba(255, 138, 0, 0.16);
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+}

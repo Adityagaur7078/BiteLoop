@@ -1,0 +1,10 @@
+.route-loading {
+  align-items: center;
+  background: var(--bg);
+  color: var(--muted);
+  display: flex;
+  font-family: Arial, sans-serif;
+  justify-content: center;
+  min-height: 100%;
+  padding: 24px;
+}

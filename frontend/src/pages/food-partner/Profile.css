@@ -1,0 +1,230 @@
+.partner-profile {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.partner-profile__topbar,
+.partner-profile__intro,
+.partner-profile__stats,
+.partner-profile__gallery {
+  width: min(100% - 40px, 760px);
+  margin-inline: auto;
+}
+
+.partner-profile__topbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 28px 0 22px;
+}
+
+.partner-profile__back {
+  align-items: center;
+  color: var(--muted);
+  display: inline-flex;
+  font-family: Arial, sans-serif;
+  font-size: 0.78rem;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.partner-profile__back span:first-child {
+  color: var(--accent);
+  font-size: 1.25rem;
+}
+
+.partner-profile__brand {
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.partner-profile__intro {
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 104px 1fr auto;
+  padding: 24px 0 28px;
+}
+
+.partner-profile__avatar {
+  align-items: center;
+  aspect-ratio: 1;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  color: var(--accent-strong);
+  display: flex;
+  font-size: 2.25rem;
+  justify-content: center;
+  width: 104px;
+}
+
+.partner-profile__identity h1 {
+  font-size: clamp(1.65rem, 4vw, 2.55rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  margin: 0 0 8px;
+}
+
+.partner-profile__identity p {
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.partner-profile__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.partner-profile__button {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  min-width: 112px;
+  padding: 10px 18px;
+  text-decoration: none;
+}
+
+.partner-profile__button--quiet {
+  background: transparent;
+  color: var(--accent-strong);
+}
+
+.partner-profile__stats {
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 22px 0;
+  gap: 20px;
+  text-align: center;
+}
+
+.partner-profile__stats > a {
+  display: inline-flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.partner-profile__stats div + div {
+  border-left: 1px solid var(--border);
+}
+
+.partner-profile__stats strong,
+.partner-profile__stats span {
+  display: block;
+}
+
+.partner-profile__stats strong {
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.partner-profile__stats span {
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.partner-profile__gallery {
+  display: grid;
+  gap: 3px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 24px 0 40px;
+}
+
+.partner-profile__tile {
+  aspect-ratio: 0.82;
+  background: var(--surface-strong);
+  overflow: hidden;
+  position: relative;
+}
+
+.partner-profile__tile video {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.partner-profile__tile-overlay {
+  align-items: flex-end;
+  background: linear-gradient(transparent, rgba(34, 27, 23, 0.78));
+  bottom: 0;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  padding: 28px 10px 12px;
+  position: absolute;
+  right: 0;
+}
+
+.partner-profile__tile-overlay h2 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.partner-profile__tile-overlay span {
+  color: var(--accent);
+  font-size: 0.72rem;
+}
+
+.partner-profile__empty {
+  color: var(--muted);
+  font-family: Arial, sans-serif;
+  grid-column: 1 / -1;
+  padding: 40px 0;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .partner-profile__topbar,
+  .partner-profile__intro,
+  .partner-profile__stats,
+  .partner-profile__gallery {
+    width: min(100% - 28px, 420px);
+  }
+
+  .partner-profile__intro {
+    grid-template-columns: 78px 1fr;
+  }
+
+  .partner-profile__avatar {
+    width: 78px;
+  }
+
+  .partner-profile__actions {
+    align-items: stretch;
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+
+  .partner-profile__button {
+    flex: 1;
+  }
+
+  .partner-profile__gallery {
+    gap: 2px;
+    padding-top: 18px;
+  }
+}
