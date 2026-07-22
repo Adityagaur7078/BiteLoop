@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Profile.css";
+import API_URL from "../../api/api";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -10,7 +11,7 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/auth/profile",
+          `${API_URL}/api/auth/profile`,
           {
             withCredentials: true,
           }

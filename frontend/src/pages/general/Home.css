@@ -45,7 +45,7 @@
   overscroll-behavior-y: contain;
   scrollbar-width: none;
   scroll-snap-type: y mandatory;
-  width: min(100%, 300px);
+  width: min(100%, 420px);
   z-index: 1;
 }
 
@@ -129,7 +129,7 @@
   position: absolute;
   top: 0;
   transform: translateX(-50%);
-  width: min(100%, 300px);
+  width: min(100%, 420px);
   z-index: 5;
 }
 

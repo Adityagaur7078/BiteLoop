@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Home.css";
+import API_URL from "../../api/api";
 
 const iconPaths = {
   heart: "M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z",
@@ -80,7 +81,7 @@ const Home = () => {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/food", { withCredentials: true });
+        const response = await axios.get(`${API_URL}/api/food`, { withCredentials: true });
         setFoods(response.data.foodItems || []);
       } catch (error) {
         setLoadError(error.response?.data?.message || "Your food feed is taking a moment to load.");

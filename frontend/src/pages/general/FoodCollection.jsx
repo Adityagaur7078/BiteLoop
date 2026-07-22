@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./FoodCollection.css";
+import API_URL from "../../api/api";
 
 const FoodCollection = () => {
   const { type } = useParams();
@@ -16,7 +17,7 @@ const FoodCollection = () => {
     const loadCollection = async () => {
       try {
         const ids = JSON.parse(localStorage.getItem(storageKey) || "[]");
-        const response = await axios.get("http://localhost:3000/api/food", { withCredentials: true });
+        const response = await axios.get(`${API_URL}/api/food`, { withCredentials: true });
         setFoods((response.data.foodItems || []).filter((food) => ids.includes(food._id)));
       } catch {
         setFoods([]);

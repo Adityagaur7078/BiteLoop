@@ -4,14 +4,14 @@ import axios from "axios";
 import "./routes.css";
 import API_URL from "../api/api";
 
-const ProtectedFoodPartnerRoute = ({ children }) => {
+const ProtectedUserRoute = ({ children }) => {
   const [isChecking, setIsChecking] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const checkPartnerSession = async () => {
+    const checkUserSession = async () => {
       try {
-        await axios.get(`${API_URL}/api/auth/foodPartner/me`, {
+        await axios.get(`${API_URL}/api/auth/profile`, {
           withCredentials: true,
         });
         setIsAuthenticated(true);
@@ -22,14 +22,14 @@ const ProtectedFoodPartnerRoute = ({ children }) => {
       }
     };
 
-    checkPartnerSession();
+    checkUserSession();
   }, []);
 
   if (isChecking) {
-    return <div className="route-loading">Checking your partner session...</div>;
+    return <div className="route-loading">Checking your session...</div>;
   }
 
-  return isAuthenticated ? children : <Navigate to="/food-partner/login" replace />;
+  return isAuthenticated ? children : <Navigate to="/user/login" replace />;
 };
 
-export default ProtectedFoodPartnerRoute;
+export default ProtectedUserRoute;

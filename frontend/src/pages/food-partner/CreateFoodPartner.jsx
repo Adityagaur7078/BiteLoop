@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./CreateFoodPartner.css";
+import API_URL from "../../api/api";
 
 const CreateFoodPartner = () => {
   const [form, setForm] = useState({
@@ -80,7 +81,7 @@ const CreateFoodPartner = () => {
       setIsSubmitting(true);
 
       const response = await axios.post(
-        "http://localhost:3000/api/food",
+        `${API_URL}/api/food`,
         formData,
         {
           withCredentials: true,
