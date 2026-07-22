@@ -12,7 +12,7 @@ app.use(express.json());
 const allowedOrigins = [
     "http://localhost:5173",
     "http://localhost:5174",
-    "https://bite-loop-ismpgsyg3-aditya-gaurs-projects-19c48430.vercel.app",
+    process.env.FRONTEND_URL,
 ];
 
 app.use(
