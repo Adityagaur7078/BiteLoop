@@ -8,12 +8,14 @@ const foodRoutes = require("./routes/food.routes");
 const app = express();
 
 app.use(express.json());
+app.set("trust proxy", 1);
 
-const allowedOrigins = [
+const allowedOrigins = new Set([
     "http://localhost:5173",
     "http://localhost:5174",
+    "https://bite-loop.vercel.app",
     process.env.FRONTEND_URL,
-];
+].filter(Boolean));
 
 app.use(
     cors({
@@ -23,7 +25,7 @@ app.use(
                 return callback(null, true);
             }
 
-            if (allowedOrigins.includes(origin)) {
+            if (allowedOrigins.has(origin)) {
                 return callback(null, true);
             }
 

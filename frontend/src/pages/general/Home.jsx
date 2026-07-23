@@ -146,7 +146,7 @@ const Home = () => {
   };
 
   const handleLogout = async () => {
-    await axios.get("http://localhost:3000/api/auth/user/logout", { withCredentials: true }).catch(() => {});
+    await axios.get(`${API_URL}/api/auth/user/logout`, { withCredentials: true }).catch(() => {});
     setLogoutOpen(false);
     navigate("/user/login");
   };
