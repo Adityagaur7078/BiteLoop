@@ -16,6 +16,15 @@ A modern full-stack MERN application where users can discover short food reels, 
 
 ---
 
+## 🌐 Live Demo
+
+Frontend: https://bite-loop.vercel.app
+
+Backend API:
+https://biteloop.onrender.com
+
+---
+
 # 📖 About
 
 **BiteLoop** is a modern social food discovery platform inspired by short-form video applications.
