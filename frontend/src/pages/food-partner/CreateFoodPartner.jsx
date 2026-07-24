@@ -88,9 +88,6 @@ const CreateFoodPartner = () => {
         }
       );
 
-      console.log("SUCCESS");
-      console.log(response);
-
       setSuccess("Meal published successfully.");
       setTimeout(() => {
         setSuccess("");
@@ -103,7 +100,6 @@ const CreateFoodPartner = () => {
 
       setVideo(null);
     } catch (err) {
-      console.log("ERROR");
       console.log(err);
       console.log(err.response);
       console.log(err.message);

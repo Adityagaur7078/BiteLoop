@@ -29,8 +29,6 @@ const FoodPartnerRegister = () => {
       password
     }, { withCredentials: true });
 
-    console.log(response.data);
-
     navigate("/create-food");
 
   };
