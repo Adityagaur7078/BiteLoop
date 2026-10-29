@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/theme.css';
 import '../../styles/auth.css';
@@ -8,21 +9,30 @@ import { setSessionHint } from "../../auth/sessionHint";
 const UserLogin = () => {
 
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
+    setErrorMessage("");
+    setIsSubmitting(true);
 
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    const response = await axios.post(`${API_URL}/api/auth/user/login`, {
-      email,
-      password
-    },{ withCredentials: true });
+    try {
+      await axios.post(`${API_URL}/api/auth/user/login`, {
+        email,
+        password
+      },{ withCredentials: true });
 
-    setSessionHint("user");
-    navigate("/");
+      setSessionHint("user");
+      navigate("/");
+    } catch (error) {
+      setErrorMessage(error.response?.data?.message || "Unable to log in. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
 
   }
 
@@ -33,7 +43,7 @@ const UserLogin = () => {
         <h1 className="auth-title">Login to your account</h1>
         <p className="auth-subtitle">Pick your next meal with a smooth and minimal flow.</p>
 
-        <form onSubmit={handleSubmit} className="auth-form">
+        <form onSubmit={handleSubmit} className="auth-form" noValidate>
           <div className="auth-field">
             <label htmlFor="email">Email address</label>
             <input id="email" type="email" placeholder="you@example.com" />
@@ -44,7 +54,10 @@ const UserLogin = () => {
             <input id="password" type="password" placeholder="Enter your password" />
           </div>
 
-          <button className="auth-button" type="submit">Login</button>
+          {errorMessage && <p className="auth-error" role="alert">{errorMessage}</p>}
+          <button className="auth-button" type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Logging in..." : "Login"}
+          </button>
         </form>
 
         <p className="auth-footer">

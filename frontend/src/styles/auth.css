@@ -118,6 +118,23 @@ body {
   box-shadow: 0 12px 24px rgba(242, 92, 0, 0.22);
 }
 
+.auth-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  transform: none;
+}
+
+.auth-error {
+  margin: 0;
+  padding: 11px 13px;
+  border: 1px solid rgba(190, 48, 48, 0.3);
+  border-radius: 12px;
+  background: rgba(190, 48, 48, 0.1);
+  color: #b52f2f;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
 .auth-footer {
   margin-top: 18px;
   color: var(--muted);
