@@ -3,12 +3,16 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 import "./routes.css";
 import API_URL from "../api/api";
+import { clearSessionHint, hasSessionHint } from "../auth/sessionHint";
 
 const ProtectedFoodPartnerRoute = ({ children }) => {
-  const [isChecking, setIsChecking] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const hasCachedSession = hasSessionHint("foodPartner");
+  const [isChecking, setIsChecking] = useState(hasCachedSession);
+  const [isAuthenticated, setIsAuthenticated] = useState(hasCachedSession);
 
   useEffect(() => {
+    if (!hasCachedSession) return;
+
     const checkPartnerSession = async () => {
       try {
         await axios.get(`${API_URL}/api/auth/foodPartner/me`, {
@@ -16,6 +20,7 @@ const ProtectedFoodPartnerRoute = ({ children }) => {
         });
         setIsAuthenticated(true);
       } catch {
+        clearSessionHint("foodPartner");
         setIsAuthenticated(false);
       } finally {
         setIsChecking(false);
@@ -23,7 +28,7 @@ const ProtectedFoodPartnerRoute = ({ children }) => {
     };
 
     checkPartnerSession();
-  }, []);
+  }, [hasCachedSession]);
 
   if (isChecking) {
     return <div className="route-loading">Checking your partner session...</div>;

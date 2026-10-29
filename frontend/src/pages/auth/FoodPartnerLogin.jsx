@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../../styles/theme.css';
 import '../../styles/auth.css';
 import API_URL from "../../api/api";
+import { setSessionHint } from "../../auth/sessionHint";
 
 const FoodPartnerLogin = () => {
 
@@ -20,6 +21,7 @@ const FoodPartnerLogin = () => {
       password
     }, { withCredentials: true })
 
+    setSessionHint("foodPartner");
     navigate("/create-food");
 
   }

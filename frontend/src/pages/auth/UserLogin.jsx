@@ -3,6 +3,7 @@ import '../../styles/theme.css';
 import '../../styles/auth.css';
 import axios from 'axios';
 import API_URL from "../../api/api";
+import { setSessionHint } from "../../auth/sessionHint";
 
 const UserLogin = () => {
 
@@ -20,6 +21,7 @@ const UserLogin = () => {
       password
     },{ withCredentials: true });
 
+    setSessionHint("user");
     navigate("/");
 
   }

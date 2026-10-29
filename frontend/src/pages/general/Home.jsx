@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Home.css";
 import API_URL from "../../api/api";
+import { clearSessionHint } from "../../auth/sessionHint";
 
 const iconPaths = {
   heart: "M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z",
@@ -147,6 +148,7 @@ const Home = () => {
 
   const handleLogout = async () => {
     await axios.get(`${API_URL}/api/auth/user/logout`, { withCredentials: true }).catch(() => {});
+    clearSessionHint("user");
     setLogoutOpen(false);
     navigate("/user/login");
   };
